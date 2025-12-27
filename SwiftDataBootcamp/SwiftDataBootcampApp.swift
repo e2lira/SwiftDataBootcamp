@@ -12,12 +12,22 @@ import SwiftData
 struct SwiftDataBootcampApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            Product.self,
+            TypeProduct.self,
         ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+        // isStoredInMemoryOnly: Usa true para pruebas rápidas y false para la base de datos real del usuario.
+        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
 
         do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+           // return try ModelContainer(for: schema, configurations: [modelConfiguration])
+            let container = try ModelContainer(for: schema, configurations: [modelConfiguration])
+                      
+                      // LLAMADA A LA PRECARGA
+            Task { @MainActor in
+                DataInitializer.setup(container: container)
+            }
+                      
+            return container
         } catch {
             fatalError("Could not create ModelContainer: \(error)")
         }

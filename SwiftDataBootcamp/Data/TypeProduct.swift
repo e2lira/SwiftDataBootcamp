@@ -14,7 +14,7 @@ final class TypeProduct {
     
     // Relación: Un tipo tiene muchos productos
     // .cascade elimina los productos si se elimina el tipo
-    @Relationship(deleteRule: .cascade, inverse: \Product.typeProduct)
+    @Relationship(deleteRule: .cascade, inverse: \Product.type)
     var products: [Product]? = []
     
     init(name: String) {

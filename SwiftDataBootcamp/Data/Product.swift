@@ -11,19 +11,28 @@ import SwiftData
 @Model
 final class Product {
     var id: UUID
-    var name: String
-    var price: Double
-    var enabled: Bool
-    var timestamp: Date
+    var name: String?
+    var price: Double?
+    var enabled: Bool?
+    var timestamp: Date?
     // Relation one product belons to ane type of product
-    var typeProduct: TypeProduct?
+    var type: TypeProduct?
     
-    init(id: UUID, name: String, enabled: Bool = true, timestamp: Date, typeProduct: TypeProduct? = nil) {
-        self.id = id
-        self.name = name
-        self.enabled = enabled
-        self.timestamp = timestamp
-        self.typeProduct = typeProduct
+    init(){
+        self.id = UUID()
     }
     
+    init(id: UUID, name: String, price: Double,enabled: Bool = true, timestamp: Date, type: TypeProduct? = nil) {
+        self.id = id
+        self.name = name
+        self.price = price
+        self.enabled = enabled
+        self.timestamp = timestamp
+        self.type = type
+    }
+    
+    // Reglas de negocio
+    public func isValid() -> Bool {
+        return name != nil && price != nil
+    }
 }
