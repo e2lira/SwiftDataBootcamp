@@ -107,7 +107,7 @@ struct ContentView: View {
     
     private func addItem() {
         withAnimation {
-            viewModel?.insertProduct(name: "Donut", price: 12.10, typeName: "Panadería")
+            viewModel?.insertProduct(name: "Crema facial", price: 12.10, typeName: "Cosméticos")
         }
     }
 
