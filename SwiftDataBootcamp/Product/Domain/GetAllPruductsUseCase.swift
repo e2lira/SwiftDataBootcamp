@@ -7,9 +7,15 @@
 
 import Foundation
 
-class GetAllPruducrtsUseCase: ProductUseCaseProtocol {
-    func GetAllProductsUseCase() -> [Product] {
+/**
+ SOLID
+ Single Responsability
+ */
+class GetAllPruductsUseCase: GetProductsUseCaseProtocol {
+    func Execute() -> [Product] {
         var productList: Array<Product> = []
+        
+        // Tenemos que programar la consulta al Repository
         
         return productList
     }

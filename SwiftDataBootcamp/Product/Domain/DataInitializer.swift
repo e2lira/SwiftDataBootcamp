@@ -28,17 +28,17 @@ class DataInitializer{
 //        let milk = Product(id: UUID(), name: "Milk", price: 45.50, timestamp: Date())
 //        let croissant = Product(id: UUID(), name: "Croissant", price: 15.20, timestamp: Date())
 //        let apple = Product(id: UUID(), name: "Apple", price: 10.50, timestamp: Date())
-        let milk = Product(id: UUID(), name: "Milk", price: 45.50, timestamp: Date(), type: lacteos)
-        let croissant = Product(id: UUID(), name: "Croissant", price: 15.20, timestamp: Date(), type: panaderia)
-        let apple = Product(id: UUID(), name: "Apple", price: 10.50, timestamp: Date(), type: frutas)
+//        let milk = Product(id: UUID(), name: "Milk", price: 45.50, timestamp: Date(), type: lacteos)
+//        let croissant = Product(id: UUID(), name: "Croissant", price: 15.20, timestamp: Date(), type: panaderia)
+//        let apple = Product(id: UUID(), name: "Apple", price: 10.50, timestamp: Date(), type: frutas)
         
         // 4. Insert into the context
         context.insert(lacteos)
         context.insert(panaderia)
         context.insert(frutas)
-        context.insert(milk)
-        context.insert(croissant)
-        context.insert(apple)
+//        context.insert(milk)
+//        context.insert(croissant)
+//        context.insert(apple)
         
         // SwiftData save automatically but we can forze to save
         try? context.save()

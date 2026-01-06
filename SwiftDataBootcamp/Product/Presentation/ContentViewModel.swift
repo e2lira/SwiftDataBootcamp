@@ -12,13 +12,27 @@ import SwiftData
 final class ContentViewModel {
     var modelContext: ModelContext
     var errorMessage: String?
+    var allProducts: [Product] = []
     
+    // Dependency Injection
+    // 1 Declarar una variable con el protocolo o interface
+    let getProductsUseCase: GetProductsUseCaseProtocol
 //    Nota sobre hilos (Threads)
 //    Si planeas hacer operaciones pesadas en segundo plano dentro de tu clase:
 //    El modelContext principal está ligado al Main Actor.
 //    Si necesitas procesar datos en background, deberás pasar el modelContainer a la clase y crear un ModelContext nuevo (o usar un ModelActor) para operaciones fuera del hilo principal.
-    init(modelContext: ModelContext) {
+    
+    // Dependency Injection
+    // 2 Pasar como parametro la variable de tipo Protocol en el init
+    init(modelContext: ModelContext, getProductsUseCase: GetProductsUseCaseProtocol) {
         self.modelContext = modelContext
+        self.getProductsUseCase = getProductsUseCase
+    }
+    
+    // Dependency Injection
+    // 3 Ejecutar mediante la variable de tipo protocolo el método de la clase
+    func getAllProducts(){
+        allProducts = getProductsUseCase.Execute()
     }
     
     func insertObjProduct(product: Product){
